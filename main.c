@@ -32,17 +32,17 @@ int main (int argc, char *argv[]) {
 	
 	labelWS = gtk_label_new("ウィールの大きさ");
 	gtk_label_set_justify(GTK_LABEL(labelWS), GTK_JUSTIFY_LEFT);
-	gtk_fixed_put(GTK_FIXED(fixed), labelWS, 400, 0);
+	gtk_fixed_put(GTK_FIXED(fixed), labelWS, 245, 0);
 	gtk_widget_set_size_request(labelWS, 97, 30);
 	
 	labelKID = gtk_label_new("カートID");
 	gtk_label_set_justify(GTK_LABEL(labelKID), GTK_JUSTIFY_LEFT);
-	gtk_fixed_put(GTK_FIXED(fixed), labelKID, 800, 0);
+	gtk_fixed_put(GTK_FIXED(fixed), labelKID, 450, 0);
 	gtk_widget_set_size_request(labelKID, 97, 30);
 	
 	labelKN = gtk_label_new("キャラ名");
 	gtk_label_set_justify(GTK_LABEL(labelKN), GTK_JUSTIFY_LEFT);
-	gtk_fixed_put(GTK_FIXED(fixed), labelKN, 400, 40);
+	gtk_fixed_put(GTK_FIXED(fixed), labelKN, 325, 40);
 	gtk_widget_set_size_request(labelKN, 97, 30);
 	
 	labelLF = gtk_label_new("前左");
@@ -80,7 +80,7 @@ int main (int argc, char *argv[]) {
 	gtk_combo_box_append_text(GTK_COMBO_BOX(comboKN), "0x0A - ワルイージ");
 	gtk_combo_box_append_text(GTK_COMBO_BOX(comboKN), "0x0B - HVC-012");
 	gtk_combo_box_append_text(GTK_COMBO_BOX(comboKN), "0x0C - ヘイホー");
-	gtk_fixed_put(GTK_FIXED(fixed), comboKN, 480, 40);
+	gtk_fixed_put(GTK_FIXED(fixed), comboKN, 410, 40);
 	gtk_widget_set_size_request(comboKN, 250, 30);
 	
 	/*g_signal_connect(G_OBJECT(comboKN), "changed", 
@@ -124,7 +124,7 @@ int main (int argc, char *argv[]) {
 	gtk_combo_box_append_text(GTK_COMBO_BOX(comboKID), "0x22 - HVC-BLS");
 	gtk_combo_box_append_text(GTK_COMBO_BOX(comboKID), "0x23 - HVC-LGS");
 	gtk_combo_box_append_text(GTK_COMBO_BOX(comboKID), "0x24 - スタンダードHH");
-	gtk_fixed_put(GTK_FIXED(fixed), comboKID, 880, 0);
+	gtk_fixed_put(GTK_FIXED(fixed), comboKID, 530, 0);
 	gtk_widget_set_size_request(comboKID, 250, 30);
 	
 	// エントリー物。
@@ -132,104 +132,119 @@ int main (int argc, char *argv[]) {
 	gtk_entry_set_text(GTK_ENTRY(entryWN), "");
 	gtk_entry_set_editable(GTK_ENTRY(entryWN), TRUE);
 	gtk_fixed_put(GTK_FIXED(fixed), entryWN, 85, 0);
-	gtk_widget_set_size_request(entryWN, 197, 30);
+	gtk_widget_set_size_request(entryWN, 107, 30);
 	
 	entryWS = gtk_entry_new();
 	gtk_entry_set_text(GTK_ENTRY(entryWS), "");
 	gtk_entry_set_editable(GTK_ENTRY(entryWS), TRUE);
-	gtk_fixed_put(GTK_FIXED(fixed), entryWS, 503, 0);
-	gtk_widget_set_size_request(entryWS, 197, 30);
+	gtk_fixed_put(GTK_FIXED(fixed), entryWS, 350, 0);
+	gtk_widget_set_size_request(entryWS, 107, 30);
 	
 	/*g_signal_connect(G_OBJECT(entry), "key-release-event",
 		G_CALLBACK(entryres), NULL);*/
 	
 	// スピンボタン物。
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinLFX = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinLFX), TRUE);
 	gtk_fixed_put (GTK_FIXED (fixed), spinLFX, 85, 40);
+	gtk_widget_set_size_request(spinLFX, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinLFY = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinLFY), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinLFY, 150, 40);
+	gtk_fixed_put (GTK_FIXED (fixed), spinLFY, 170, 40);
+	gtk_widget_set_size_request(spinLFY, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinLFZ = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinLFZ), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinLFZ, 215, 40);
+	gtk_fixed_put (GTK_FIXED (fixed), spinLFZ, 255, 40);
+	gtk_widget_set_size_request(spinLFZ, 77, 30);
 	
 	// --------------
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinLBX = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinLBX), TRUE);
 	gtk_fixed_put (GTK_FIXED (fixed), spinLBX, 85, 80);
+	gtk_widget_set_size_request(spinLBX, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinLBY = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinLBY), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinLBY, 150, 80);
+	gtk_fixed_put (GTK_FIXED (fixed), spinLBY, 170, 80);
+	gtk_widget_set_size_request(spinLBY, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinLBZ = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinLBZ), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinLBZ, 215, 80);
+	gtk_fixed_put (GTK_FIXED (fixed), spinLBZ, 255, 80);
+	gtk_widget_set_size_request(spinLBZ, 77, 30);
 	
 	// --------------
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinRFX = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinRFX), TRUE);
 	gtk_fixed_put (GTK_FIXED (fixed), spinRFX, 85, 120);
+	gtk_widget_set_size_request(spinRFX, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinRFY = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinRFY), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinRFY, 150, 120);
+	gtk_fixed_put (GTK_FIXED (fixed), spinRFY, 170, 120);
+	gtk_widget_set_size_request(spinRFY, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinRFZ = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinRFZ), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinRFZ, 215, 120);
+	gtk_fixed_put (GTK_FIXED (fixed), spinRFZ, 255, 120);
+	gtk_widget_set_size_request(spinRFZ, 77, 30);
 	
 	// --------------
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinRBX = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinRBX), TRUE);
 	gtk_fixed_put (GTK_FIXED (fixed), spinRBX, 85, 160);
+	gtk_widget_set_size_request(spinRBX, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinRBY = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinRBY), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinRBY, 150, 160);
+	gtk_fixed_put (GTK_FIXED (fixed), spinRBY, 170, 160);
+	gtk_widget_set_size_request(spinRBY, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinRBZ = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinRBZ), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinRBZ, 215, 160);
+	gtk_fixed_put (GTK_FIXED (fixed), spinRBZ, 255, 160);
+	gtk_widget_set_size_request(spinRBZ, 77, 30);
 	
 	// --------------
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinX = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinX), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinX, 400, 80);
+	gtk_fixed_put (GTK_FIXED (fixed), spinX, 350, 80);
+	gtk_widget_set_size_request(spinX, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinY = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinY), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinY, 465, 80);
+	gtk_fixed_put (GTK_FIXED (fixed), spinY, 435, 80);
+	gtk_widget_set_size_request(spinY, 77, 30);
 	
-	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -255.0, 255.0, 1.0, 5.0, 0.0);
+	adj = (GtkAdjustment *) gtk_adjustment_new (0.0, -999999.0, 999999.0, 1.0, 5.0, 0.0);
 	spinZ = gtk_spin_button_new (adj, 0, 0);
 	gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinZ), TRUE);
-	gtk_fixed_put (GTK_FIXED (fixed), spinZ, 530, 80);
+	gtk_fixed_put (GTK_FIXED (fixed), spinZ, 520, 80);
+	gtk_widget_set_size_request(spinZ, 77, 30);
 	
 	// ボタン物。
 	buttonAku = gtk_button_new_with_label("開く");
-	gtk_fixed_put(GTK_FIXED(fixed), buttonAku, 0, 200);
+	gtk_fixed_put(GTK_FIXED(fixed), buttonAku, 350, 160);
 	gtk_widget_set_size_request(buttonAku, 90, 30);
 	gtk_widget_set_sensitive(buttonAku, TRUE);
 	
@@ -237,7 +252,7 @@ int main (int argc, char *argv[]) {
 		G_CALLBACK(open_func), (gpointer) window);
 	
 	buttonHozon = gtk_button_new_with_label("保存");
-	gtk_fixed_put(GTK_FIXED(fixed), buttonHozon, 100, 200);
+	gtk_fixed_put(GTK_FIXED(fixed), buttonHozon, 450, 160);
 	gtk_widget_set_size_request(buttonHozon, 90, 30);
 	gtk_widget_set_sensitive(buttonHozon, TRUE);
 	
@@ -257,7 +272,7 @@ int main (int argc, char *argv[]) {
 	// あたしの名前は。。。
 	labelF = gtk_label_new("Made by MKGirlism. https://www.dshack.org");
 	gtk_label_set_justify(GTK_LABEL(labelF), GTK_JUSTIFY_RIGHT);
-	gtk_fixed_put(GTK_FIXED(fixed), labelF, 150, 250);
+	gtk_fixed_put(GTK_FIXED(fixed), labelF, 150, 200);
 	gtk_widget_set_size_request(labelF, 400, 30);
 	
 	// 全て破壊して。
