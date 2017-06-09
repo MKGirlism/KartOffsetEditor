@@ -1,6 +1,11 @@
 #include "filez.h"
 #include <stdio.h> // デバッグなど。
-#include <stdlib.h> // strtol()。
+#include <stdlib.h> // strtol()など。
+
+// 大切な関数。（サンキュー、Ermelberさん！）
+int hexToInt (const char* hex) {
+	return (int)strtol(hex, NULL, 16);
+}
 
 // 「開く」と呼んだダイアログ。
 void open_func (GtkWidget *widget, gpointer window) {
@@ -25,13 +30,9 @@ void open_func (GtkWidget *widget, gpointer window) {
 		pFile = fopen(filename, "r");
 
 		if (pFile != NULL) {
-		//	if (!readobjmodel (pFile, &objfile))
-		//		exit (EXIT_FAILURE);
-		//	renderobjmodel (&objfile);
 			passFilename = filename;
 			g_print("\"%s\"を開くことが成功。\n", passFilename);
-		//	g_signal_connect(G_OBJECT(drawing_area), "realize",
-		//		G_CALLBACK(realise), NULL);
+			
 			isload = 1;
 		}
 		else {
@@ -64,26 +65,17 @@ void open_func (GtkWidget *widget, gpointer window) {
 			
 			// ▶▶▶ウィールの大きさ。◀◀◀
 			// 準備中。
-			const char *woo = "099A";
-			char buffero[11];
-			char *dsto = buffero;
-			char *endo = buffero + sizeof (buffero);
-			unsigned int uo;
 			
 			// データ変換。
-			while (dsto < endo && sscanf (woo, "%2x", &uo) == 1) {
-				*dsto++ = uo;
-				woo += 2;
-			}
+			char buf[4];
+			sprintf(buf,"%d",hexToInt("9A09"));
 			
 			// アプリに書き込み。
 			gint tmp_pos2 = GTK_ENTRY (entryWS)->text_length;
 			
-			//for (dsto = buffero; dsto < endo; dsto++) {
-				gtk_editable_insert_text (GTK_EDITABLE (entryWS), woo, -1, &tmp_pos2);
-				gtk_editable_delete_text (GTK_EDITABLE (entryWS), 11, GTK_ENTRY (entryWS)->text_length);
-				gtk_editable_select_region (GTK_EDITABLE (entryWS), 0, GTK_ENTRY (entryWS)->text_length);
-			//}
+			gtk_editable_insert_text (GTK_EDITABLE (entryWS), buf, -1, &tmp_pos2);
+			gtk_editable_delete_text (GTK_EDITABLE (entryWS), 11, GTK_ENTRY (entryWS)->text_length);
+			gtk_editable_select_region (GTK_EDITABLE (entryWS), 0, GTK_ENTRY (entryWS)->text_length);
 		}
 		
 		g_free(filename);
