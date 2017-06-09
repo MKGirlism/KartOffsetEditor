@@ -1,29 +1,9 @@
 #include "filez.h"
 #include <stdio.h> // デバッグなど。
-
-// 大切な関数。
-int hex_to_int (char c) {
-	int first = c / 16 - 3;
-	int second = c % 16;
-	int result = first*10 + second;
-	if (result > 9) result--;
-	
-	return result;
-}
-
-int hex_to_ascii (char c, char d) {
-	int high = hex_to_int (c) * 16;
-	int low = hex_to_int (d);
-
-	return high + low;
-}
+#include <stdlib.h> // strtol()。
 
 // 「開く」と呼んだダイアログ。
 void open_func (GtkWidget *widget, gpointer window) {
-	// テスト中。
-	const char *tstr = "6B6172745F746972655F4D";
-	int length = strlen(tstr);
-	
 	GtkWidget *dialogue;
 	FILE * pFile;
 	
@@ -59,29 +39,54 @@ void open_func (GtkWidget *widget, gpointer window) {
 		}
 
 		if (isload == 1) {
-			int i;
-			char buf = 0;
+			// ▶▶▶ウィール名。◀◀◀
+			// 準備中。
+			const char *wmei = "6B6172745F746972655F4D";
+			char bufferm[11];
+			char *dstm = bufferm;
+			char *endm = bufferm + sizeof (bufferm);
+			unsigned int um;
+			
+			// データ変換。
+			while (dstm < endm && sscanf (wmei, "%2x", &um) == 1) {
+				*dstm++ = um;
+				wmei += 2;
+			}
+			
+			// アプリに書き込み。
 			gint tmp_pos = GTK_ENTRY (entryWN)->text_length;
 			
-			for (i = 0; i < length; i++) {
-				if(i % 2 != 0) {
-					// アプリのウィジェットを書き込み。
-					//const char *st = hex_to_ascii (buf, tstr[i]);
-					
-					gtk_editable_insert_text (GTK_EDITABLE (entryWN), tstr, -1, &tmp_pos);
-					gtk_editable_delete_text (GTK_EDITABLE (entryWN), length, GTK_ENTRY (entryWN)->text_length);
-					gtk_editable_select_region (GTK_EDITABLE (entryWN), 0, GTK_ENTRY (entryWN)->text_length);
-				}
-				else {
-					buf = tstr[i];
-				}
+			for (dstm = bufferm; dstm < endm; dstm++) {
+				gtk_editable_insert_text (GTK_EDITABLE (entryWN), dstm, -1, &tmp_pos);
+				gtk_editable_delete_text (GTK_EDITABLE (entryWN), 11, GTK_ENTRY (entryWN)->text_length);
+				gtk_editable_select_region (GTK_EDITABLE (entryWN), 0, GTK_ENTRY (entryWN)->text_length);
 			}
+			
+			// ▶▶▶ウィールの大きさ。◀◀◀
+			// 準備中。
+			const char *woo = "099A";
+			char buffero[11];
+			char *dsto = buffero;
+			char *endo = buffero + sizeof (buffero);
+			unsigned int uo;
+			
+			// データ変換。
+			while (dsto < endo && sscanf (woo, "%2x", &uo) == 1) {
+				*dsto++ = uo;
+				woo += 2;
+			}
+			
+			// アプリに書き込み。
+			gint tmp_pos2 = GTK_ENTRY (entryWS)->text_length;
+			
+			//for (dsto = buffero; dsto < endo; dsto++) {
+				gtk_editable_insert_text (GTK_EDITABLE (entryWS), woo, -1, &tmp_pos2);
+				gtk_editable_delete_text (GTK_EDITABLE (entryWS), 11, GTK_ENTRY (entryWS)->text_length);
+				gtk_editable_select_region (GTK_EDITABLE (entryWS), 0, GTK_ENTRY (entryWS)->text_length);
+			//}
 		}
 		
 		g_free(filename);
-		
-		// ターミナルで確認する。
-		g_print("%s\n", gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialogue)));
 	}
 	else {
 		g_print("キャンセルを押した。\n");
