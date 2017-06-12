@@ -4,6 +4,7 @@
 
 // 普通ライブラリー。
 #include <string.h>
+#include <stdio.h>
 
 // GTKウィジェット。
 //// ラベル。
@@ -25,3 +26,6 @@ GtkAdjustment *adj;
 
 // アプリをチート中。
 char *passFilename;
+
+// ファイル向け。
+FILE *fr;

@@ -1,10 +1,33 @@
 #include "filez.h"
-#include <stdio.h> // デバッグなど。
 #include <stdlib.h> // strtol()など。
 
 // 大切な関数。（サンキュー、Ermelberさん！）
 int hexToInt (const char* hex) {
 	return (int)strtol(hex, NULL, 16);
+}
+
+// コマンドラインモード。
+void command (char *filemei) {
+	printf ("おっす、%s！\n", filemei);
+	
+	// ファイルを読んで。
+	fr = fopen (filemei, "rb");
+	char c;
+	int bufr[14];
+	long cur = ftell(fr);
+	
+	fseek (fr, 0, SEEK_SET);
+	
+	//while ((c = fgetc(fr)) != 0x00) {
+	fread (bufr, sizeof(int), 14, fr);
+		
+	for (int i = 0; i < 14; i++) {
+		printf ("%02X ", bufr[i]);
+	}
+	
+	printf ("\n");
+	
+	fclose (fr);
 }
 
 // 「開く」と呼んだダイアログ。
@@ -36,10 +59,27 @@ void open_func (GtkWidget *widget, gpointer window) {
 			isload = 1;
 		}
 		else {
-			g_print("エラー：\"%s\"を開くことが失敗。");
+			g_print("エラー：\"%s\"を開くことが失敗。\n");
 		}
 
 		if (isload == 1) {
+			// 準備中。
+			char mei;
+			char moo;
+			
+			// ファイルを読んで。
+			fr = fopen (passFilename, "rb");
+			char c;
+			int bufr[14];
+			long cur = ftell(fr);
+			
+			fseek (fr, 0, SEEK_SET);
+			
+			//while ((c = fgetc(fr)) != 0x00) {
+			fread (bufr, sizeof(int), 14, fr);
+			
+			fclose (fr);
+			
 			// ▶▶▶ウィール名。◀◀◀
 			// 準備中。
 			const char *wmei = "6B6172745F746972655F4D";
@@ -68,7 +108,17 @@ void open_func (GtkWidget *widget, gpointer window) {
 			
 			// データ変換。
 			char buf[4];
-			sprintf(buf,"%d",hexToInt("9A09"));
+			const char *woo = "9A09";
+			char woohoo[4];
+			
+			for (int i = 0; i < 4; i++) {
+				woohoo[3] = woo[1];
+				woohoo[2] = woo[0];
+				woohoo[1] = woo[3];
+				woohoo[0] = woo[2];
+			}
+			
+			sprintf(buf,"%d",hexToInt(woohoo));
 			
 			// アプリに書き込み。
 			gint tmp_pos2 = GTK_ENTRY (entryWS)->text_length;
@@ -76,6 +126,10 @@ void open_func (GtkWidget *widget, gpointer window) {
 			gtk_editable_insert_text (GTK_EDITABLE (entryWS), buf, -1, &tmp_pos2);
 			gtk_editable_delete_text (GTK_EDITABLE (entryWS), 11, GTK_ENTRY (entryWS)->text_length);
 			gtk_editable_select_region (GTK_EDITABLE (entryWS), 0, GTK_ENTRY (entryWS)->text_length);
+			
+			// ▶▶▶すべてのタイア。◀◀◀
+			// データを集めて。
+			
 		}
 		
 		g_free(filename);

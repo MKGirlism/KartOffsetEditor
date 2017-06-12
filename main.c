@@ -1,5 +1,6 @@
 #include "getall.h" // 一番大切なヘッダー。
 #include "filez.h" // ファイルダイアログ向け。
+#include <unistd.h> // access()。
 
 // コンボーボックスの使い方には、これは必要だ。
 void getindex (GtkWidget *widget, gpointer window) {
@@ -7,8 +8,28 @@ void getindex (GtkWidget *widget, gpointer window) {
 	g_print("%d\n", out);
 }
 
+int file_exist (char *filename) {
+	//struct stat   buffer;
+	//return (stat (filename, &buffer) == 0);
+	return 0;
+}
+
 // 無論すべてはすごく大切になる...と思う。
 int main (int argc, char *argv[]) {
+	if (argc > 1) {
+		printf ("Kart Offset Editor v0.1\n\n");
+		
+		if (access (argv[1], F_OK) != -1) {
+			command (argv[1]);
+		}
+		else {
+			printf ("不明なファイル名です下の案内を読んでください。\n\n", argv[0]);
+			
+			printf ("%s ファイル名\t\tコマンドモード。\n", argv[0]);
+			printf ("%s\t\t\tUIモード。\n", argv[0]);
+		}
+	}
+	else {
 	// GTKを開始。
 	gtk_init(&argc, &argv);
 	
@@ -282,6 +303,7 @@ int main (int argc, char *argv[]) {
 	gtk_widget_show_all(window);
 	
 	gtk_main();
+	}
 	
 	return 0;
 }
