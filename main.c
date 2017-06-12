@@ -81,6 +81,13 @@ int main (int argc, char *argv[]) {
 		gtk_widget_set_size_request(labelRB, 97, 30);
 	
 		// コンボーボクス物。
+		comboWN = gtk_combo_box_new_text();
+		gtk_combo_box_append_text(GTK_COMBO_BOX(comboWN), "kart_tire_M");
+		gtk_combo_box_append_text(GTK_COMBO_BOX(comboWN), "kart_tire_S");
+		gtk_combo_box_append_text(GTK_COMBO_BOX(comboWN), "kart_tire_L");
+		gtk_fixed_put(GTK_FIXED(fixed), comboWN, 85, 0);
+		gtk_widget_set_size_request(comboWN, 107, 30);
+		
 		comboKN = gtk_combo_box_new_text();
 		gtk_combo_box_append_text(GTK_COMBO_BOX(comboKN), "0x00 - マリオ");
 		gtk_combo_box_append_text(GTK_COMBO_BOX(comboKN), "0x01 - DK");
@@ -143,12 +150,6 @@ int main (int argc, char *argv[]) {
 		gtk_widget_set_size_request(comboKID, 250, 30);
 	
 		// エントリー物。
-		entryWN = gtk_entry_new();
-		gtk_entry_set_text(GTK_ENTRY(entryWN), "");
-		gtk_entry_set_editable(GTK_ENTRY(entryWN), TRUE);
-		gtk_fixed_put(GTK_FIXED(fixed), entryWN, 85, 0);
-		gtk_widget_set_size_request(entryWN, 107, 30);
-	
 		entryWS = gtk_entry_new();
 		gtk_entry_set_text(GTK_ENTRY(entryWS), "");
 		gtk_entry_set_editable(GTK_ENTRY(entryWS), TRUE);

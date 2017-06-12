@@ -11,7 +11,7 @@
 GtkWidget *labelWN, *labelWS, *labelKID, *labelLF, *labelRF, *labelLB, *labelRB, *labelKN;
 GtkWidget *labelF;
 //// コンボーボックスとウィンドウ。
-GtkWidget *window, *fixed, *comboKN, *comboKID;
+GtkWidget *window, *fixed, *comboKN, *comboKID, *comboWN;
 GtkWidget *entryWN, *entryWS;
 //// スピンボックス。
 GtkWidget *spinX, *spinY, *spinZ;
