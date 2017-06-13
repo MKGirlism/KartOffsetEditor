@@ -9,12 +9,17 @@ This is a complete rewrite of Szymbar15's "TooLazyToKeepDoingItByHand" (https://
 To use this tool on Windows 10 Anniversary Update or later, follow this tutorial:<br />
 https://www.dshack.org/forum.php?page=thread&tid=348
 
-Compiling on Linux (requires GTK+ 2.24):<br />
+Compiling on Linux (requires GTK+ 2.x):<br />
 gcc -o kartoffset *.c \`pkg-config --libs --cflags gtk+-2.0\`
 
-Running on Linux:<br />
-chmod 777 kartoffset<br />
+Running on Linux (first time only):<br />
+chmod 777 kartoffset
+
+Running on Linux (UI Mode):<br />
 ./kartoffset
+
+Running on Linux (Command Mode):<br />
+./kartoffset kartoffsetdata.bin
 
 <img src="http://www.mkgirlism.jp/files/images/kartoffseteditor1.png" /><br />
 <img src="http://www.mkgirlism.jp/files/images/kartoffseteditor2.png" />
