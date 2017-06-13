@@ -73,7 +73,7 @@ void command (char *filemei) {
 		scanf ("%d", &ushimiY);
 		scanf ("%d", &ushimiZ);
 		
-		printf ("\nキャラクターは%d、カードは%d。", kyara, kart);
+		printf ("\nキャラクターは%d、カードは%d、ウィール名は%d。", kyara, kart, wheelmei);
 		printf ("\nキャラーのポジション：%d、%d、%d", kyaX, kyaY, kyaZ);
 		printf ("\n前左：%d、%d、%d", mahiX, mahiY, mahiZ);
 		printf ("\n前右：%d、%d、%d", mamiX, mamiY, mamiZ);
@@ -139,7 +139,7 @@ void command (char *filemei) {
 		scanf ("%d", &ushimiY);
 		scanf ("%d", &ushimiZ);
 		
-		printf ("\nCharacter is %d, kart is %d.", kyara, kart);
+		printf ("\nCharacter is %d, kart is %d, wheel name is %d.", kyara, kart, wheelmei);
 		printf ("\nCharacter position: %d, %d, %d", kyaX, kyaY, kyaZ);
 		printf ("\nFront-Left: %d, %d, %d", mahiX, mahiY, mahiZ);
 		printf ("\nFront-Right: %d, %d, %d", mamiX, mamiY, mamiZ);
